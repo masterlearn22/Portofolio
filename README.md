@@ -2,7 +2,7 @@
 
 Personal portfolio website built with vanilla HTML, CSS & JavaScript. Clean, responsive, and professional.
 
-**[🔗 Live Demo](https://masterlearn22.github.io/portfolio/)**
+**[🔗 Live Demo](https://masterlearn22.github.io/Portfolio/)**
 
 ---
 
