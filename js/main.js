@@ -42,6 +42,8 @@ document.querySelectorAll('.mobile-nav a').forEach(link => {
 
 // === Smooth scroll for CTA ===
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  // Skip project cards — let them navigate to their links
+  if (anchor.classList.contains('project-card')) return;
   anchor.addEventListener('click', e => {
     e.preventDefault();
     const target = document.querySelector(anchor.getAttribute('href'));

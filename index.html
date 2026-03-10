@@ -1,351 +1,449 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Surya Dwi Satria — Fullstack Developer Portfolio</title>
-  <meta name="description" content="Portfolio Surya Dwi Satria — Fullstack Developer berpengalaman di Laravel, Golang, dan REST API. Mahasiswa Universitas Airlangga, Surabaya."/>
-  <meta name="author" content="Surya Dwi Satria"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/style.css"/>
+  <meta name="description"
+    content="Portfolio Surya Dwi Satria — Fullstack Developer berpengalaman di Laravel, Golang, dan REST API. Mahasiswa Universitas Airlangga, Surabaya." />
+  <meta name="author" content="Surya Dwi Satria" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
 
-<!-- Navbar -->
-<nav class="navbar" id="navbar">
-  <a href="#home" class="navbar__logo">Surya Dwi Satria</a>
-  <ul class="navbar__links">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#organization">Organisasi</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="assets/cv/cv.pdf" class="navbar__cv" download>Download CV</a></li>
-  </ul>
-  <button class="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button> 
-</nav>
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <a href="#home" class="navbar__logo">Surya Dwi Satria</a>
+    <ul class="navbar__links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#organization">Organisasi</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="assets/cv/cv.pdf" class="navbar__cv" download>Download CV</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 
-<!-- Mobile Nav -->
-<div class="mobile-nav">
-  <a href="#home">Home</a>
-  <a href="#about">About</a>
-  <a href="#experience">Experience</a>
-  <a href="#organization">Organisasi</a>
-  <a href="#projects">Projects</a>
-  <a href="#contact">Contact</a>
-  <a href="assets/cv/cv.pdf" class="btn-primary" style="margin-top:1rem" download>Download CV</a>
-</div>
-
-<!-- Hero -->
-<section class="hero" id="home">
-  <div class="hero__photo-flip reveal">
-    <div class="hero__photo-inner">
-      <div class="hero__photo-front">
-        <img src="assets/images/profile.jpg" alt="Surya Dwi Satria - Front"/>
-      </div>
-      <div class="hero__photo-back">
-        <img src="assets/images/profile-back.jpg" alt="Surya Dwi Satria - Back"/>
-      </div>
-    </div>
-  </div>
-  <h1 class="hero__title reveal reveal-delay-1">Halo, saya Surya Dwi Satria.</h1>
-  <div class="hero__typing reveal reveal-delay-2">
-    <span id="typing-text"></span><span class="typing-cursor"></span>
-  </div>
-  <p class="hero__gpa reveal reveal-delay-3">Universitas Airlangga · Diploma · GPA 3.34 / 3.59</p>
-  <div class="hero__cta reveal reveal-delay-4">
-    <a href="#projects" class="btn-primary">Lihat Proyek</a>
-    <a href="assets/cv/cv.pdf" class="btn-outline" download>Download CV</a>
-  </div>
-</section>
-
-<!-- About & Skills -->
-<section class="section-alt" id="about">
-  <div class="container">
-    <!-- Stats -->
-    <div class="stats reveal">
-      <div class="stat-card">
-        <div class="stat-card__number" data-count="6+">0</div>
-        <div class="stat-card__label">Projects</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-card__number" data-count="5">0</div>
-        <div class="stat-card__label">Organisasi</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-card__number" data-count="3.34">0</div>
-        <div class="stat-card__label">IPK</div>
-      </div>
-    </div>
-
-    <h2 class="section-title reveal">About &amp; Skills</h2>
-    <p class="section-subtitle reveal">
-      Seorang Fullstack Developer dengan latar belakang pendidikan di bidang IT di Universitas Airlangga, Surabaya. 
-      Terbiasa membangun aplikasi web menggunakan Laravel, Golang, dan REST API. 
-      Memiliki pemahaman clean architecture untuk pengembangan backend yang terstruktur dan mudah diuji. 
-      Fokus pada kualitas kode, efisiensi sistem, dan kolaborasi tim melalui Git.
-    </p>
-
-    <div class="skills reveal">
-      <span class="skill-tag">Laravel</span>
-      <span class="skill-tag">Golang</span>
-      <span class="skill-tag">JavaScript</span>
-      <span class="skill-tag">Python</span>
-      <span class="skill-tag">Go Fiber</span>
-      <span class="skill-tag">Go Gin</span>
-      <span class="skill-tag">FastAPI</span>
-      <span class="skill-tag">REST API</span>
-      <span class="skill-tag">MySQL</span>
-      <span class="skill-tag">PostgreSQL</span>
-      <span class="skill-tag">MongoDB</span>
-      <span class="skill-tag">Supabase</span>
-      <span class="skill-tag">HTML / CSS</span>
-      <span class="skill-tag">JWT</span>
-      <span class="skill-tag">Git</span>
-      <span class="skill-tag">Figma</span>
-      <span class="skill-tag">Postman</span>
-    </div>
-  </div>
-</section>
-
-<!-- Experience Timeline -->
-<section id="experience">
-  <div class="container">
-    <h2 class="section-title reveal">Work Experience</h2>
-    <div class="timeline">
-      <div class="timeline-item reveal">
-        <div class="timeline-item__dot"></div>
-        <p class="timeline-item__date">Aug 2025 – Present</p>
-        <h3 class="timeline-item__title">Golang Clean Architecture Project</h3>
-        <p class="timeline-item__role">Backend Developer · Personal Project</p>
-        <p class="timeline-item__desc">Membuat backend service dengan Golang Clean Architecture. Menguji API menggunakan Postman (CRUD, autentikasi user, middleware). Menghubungkan service dengan PostgreSQL sebagai penyimpanan data.</p>
-        <div class="timeline-item__tags"><span class="skill-tag">Go</span><span class="skill-tag">Clean Architecture</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">Postman</span></div>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-item__dot timeline-item__dot--muted"></div>
-        <p class="timeline-item__date">Nov 2025</p>
-        <h3 class="timeline-item__title">Student System Report (Go Fiber)</h3>
-        <p class="timeline-item__role">Backend Developer · Final Task</p>
-        <p class="timeline-item__desc">Sistem pelaporan siswa berfokus pada performa tinggi dan desain modular. Merancang Clean Architecture untuk memisahkan logika bisnis, membangun API berkecepatan tinggi menggunakan Go Fiber, dan mengelola basis data PostgreSQL.</p>
-        <div class="timeline-item__tags"><span class="skill-tag">Go Fiber</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">Clean Architecture</span></div>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-item__dot timeline-item__dot--muted"></div>
-        <p class="timeline-item__date">Dec 2025</p>
-        <h3 class="timeline-item__title">Home Market (Go Gin API)</h3>
-        <p class="timeline-item__role">Backend Developer · Personal Project</p>
-        <p class="timeline-item__desc">RESTful API untuk platform e-commerce barang rumahan. Mengimplementasikan autentikasi JWT, menangani katalog produk, inventaris, checkout, dan mengelola basis data MongoDB/MySQL.</p>
-        <div class="timeline-item__tags"><span class="skill-tag">Go Gin</span><span class="skill-tag">MongoDB</span><span class="skill-tag">JWT</span><span class="skill-tag">MySQL</span></div>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-item__dot timeline-item__dot--muted"></div>
-        <p class="timeline-item__date">Aug – Sep 2025</p>
-        <h3 class="timeline-item__title">Laravel-FastAPI-ML (Integrated Web)</h3>
-        <p class="timeline-item__role">Full-Stack / ML Integration Engineer · Personal Project</p>
-        <p class="timeline-item__desc">Platform web terintegrasi menggunakan Laravel untuk antarmuka pengguna dan FastAPI untuk menyajikan model AI. Merancang integrasi RESTful antara Laravel dan core prediksi Python FastAPI untuk komunikasi data real-time.</p>
-        <div class="timeline-item__tags"><span class="skill-tag">Laravel</span><span class="skill-tag">FastAPI</span><span class="skill-tag">Python</span><span class="skill-tag">Machine Learning</span></div>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-item__dot timeline-item__dot--muted"></div>
-        <p class="timeline-item__date">Jan – May 2024</p>
-        <h3 class="timeline-item__title">Gym Reservation System</h3>
-        <p class="timeline-item__role">Full-Stack · Surabaya</p>
-        <p class="timeline-item__desc">Aplikasi reservasi gym berbasis Laravel dengan integrasi Midtrans Payment Gateway. Menerapkan role management, filtering, dan API untuk mendukung fitur admin dan user. MySQL sebagai database utama.</p>
-        <div class="timeline-item__tags"><span class="skill-tag">Laravel</span><span class="skill-tag">Midtrans</span><span class="skill-tag">MySQL</span><span class="skill-tag">REST API</span></div>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-item__dot timeline-item__dot--muted"></div>
-        <p class="timeline-item__date">2025</p>
-        <h3 class="timeline-item__title">RunShoes E-commerce Website</h3>
-        <p class="timeline-item__role">Full-Stack</p>
-        <p class="timeline-item__desc">Website e-commerce sepatu olahraga menggunakan Laravel MVC dan MySQL. Fitur: katalog produk, keranjang belanja, checkout, serta manajemen stok barang.</p>
-        <div class="timeline-item__tags"><span class="skill-tag">Laravel MVC</span><span class="skill-tag">MySQL</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Organization -->
-<section class="section-alt" id="organization">
-  <div class="container">
-    <h2 class="section-title reveal">Pengalaman Organisasi</h2>
-    <div class="org-grid">
-      <div class="org-card reveal reveal-delay-1">
-        <div class="org-card__title">Airlangga University – Pondok Maslahatul Ummah</div>
-        <div class="org-card__role">Koordinator Lapangan &amp; Divisi Sosial</div>
-        <div class="org-card__date">Sep – Nov 2023 · Surabaya</div>
-        <div class="org-card__desc">Mengamankan lokasi untuk acara pelayanan sosial, mengkoordinasikan pelaksanaan acara dengan pihak pesantren, dan menjadi MC saat sesi pertunjukan berlangsung.</div>
-      </div>
-      <div class="org-card reveal reveal-delay-2">
-        <div class="org-card__title">HIMTI AI Cybernetics Guest Lecture</div>
-        <div class="org-card__role">Public Relations &amp; Licensing</div>
-        <div class="org-card__date">Mar – Apr 2024 · Kampus C Unair</div>
-        <div class="org-card__desc">Mengurus perizinan acara, mengatur koordinasi dan logistik acara dengan stakeholder, dan membimbing peserta menuju venue acara.</div>
-      </div>
-      <div class="org-card reveal reveal-delay-3">
-        <div class="org-card__title">Airlangga Open Competition</div>
-        <div class="org-card__role">Sponsorship</div>
-        <div class="org-card__date">Jul – Sep 2024 · Universitas Airlangga</div>
-        <div class="org-card__desc">Mencari dan menghubungi sponsor potensial. Menjaga komunikasi dengan sponsor untuk kebutuhan acara.</div>
-      </div>
-      <div class="org-card reveal reveal-delay-4">
-        <div class="org-card__title">HIMTI 2024 Initiation Event</div>
-        <div class="org-card__role">Companion Brother</div>
-        <div class="org-card__date">Aug – Dec 2024 · Universitas Airlangga</div>
-        <div class="org-card__desc">Menjadi penghubung antara panitia dan peserta selama kegiatan orientasi. Membantu kelancaran informasi dan aktivitas selama acara.</div>
-      </div>
-      <div class="org-card reveal reveal-delay-5">
-        <div class="org-card__title">Teknik CUP – Kampus B Unair</div>
-        <div class="org-card__role">Divisi Acara</div>
-        <div class="org-card__date">Sep – Dec 2024 · Universitas Airlangga</div>
-        <div class="org-card__desc">Bekerja sama dengan 30 panitia untuk menyukseskan acara olahraga antar 3 jurusan Teknik. Mengkoordinir waktu dan kontrol jalannya pertandingan.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Projects -->
-<section id="projects">
-  <div class="container">
-    <h2 class="section-title reveal" style="text-align:center">Projects</h2>
-    <div class="filter-tabs reveal">
-      <button class="filter-tab active" data-filter="all">All</button>
-      <button class="filter-tab" data-filter="backend">Backend</button>
-      <button class="filter-tab" data-filter="fullstack">Full-Stack</button>
-      <button class="filter-tab" data-filter="ml">ML</button>
-    </div>
-    <div class="projects-grid">
-      <div class="project-card reveal" data-category="backend">
-        <div class="project-card__img">⚙️</div>
-        <div class="project-card__title">Golang Clean Architecture</div>
-        <div class="project-card__meta">Backend · Golang</div>
-        <div class="project-card__desc">Backend service dengan Clean Architecture pattern. CRUD, autentikasi, middleware, dan PostgreSQL.</div>
-        <div class="project-card__tags"><span class="skill-tag">Go</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">Postman</span></div>
-      </div>
-      <div class="project-card reveal reveal-delay-1" data-category="backend">
-        <div class="project-card__img">📊</div>
-        <div class="project-card__title">Student System Report</div>
-        <div class="project-card__meta">Backend · Go Fiber</div>
-        <div class="project-card__desc">Sistem pelaporan siswa high-performance dengan desain modular dan Clean Architecture.</div>
-        <div class="project-card__tags"><span class="skill-tag">Go Fiber</span><span class="skill-tag">PostgreSQL</span></div>
-      </div>
-      <div class="project-card reveal reveal-delay-2" data-category="backend">
-        <div class="project-card__img">🏪</div>
-        <div class="project-card__title">Home Market API</div>
-        <div class="project-card__meta">Backend · Go Gin</div>
-        <div class="project-card__desc">RESTful API e-commerce barang rumahan dengan JWT auth, katalog, inventaris, dan checkout.</div>
-        <div class="project-card__tags"><span class="skill-tag">Go Gin</span><span class="skill-tag">MongoDB</span><span class="skill-tag">JWT</span></div>
-      </div>
-      <div class="project-card reveal reveal-delay-3" data-category="ml">
-        <div class="project-card__img">🤖</div>
-        <div class="project-card__title">Laravel-FastAPI-ML</div>
-        <div class="project-card__meta">ML Integration · Laravel + Python</div>
-        <div class="project-card__desc">Platform web terintegrasi Laravel + FastAPI untuk menyajikan model Machine Learning secara real-time.</div>
-        <div class="project-card__tags"><span class="skill-tag">Laravel</span><span class="skill-tag">FastAPI</span><span class="skill-tag">Python</span></div>
-      </div>
-      <div class="project-card reveal reveal-delay-4" data-category="fullstack">
-        <div class="project-card__img">🏋️</div>
-        <div class="project-card__title">Gym Reservation System</div>
-        <div class="project-card__meta">Full-Stack · Laravel</div>
-        <div class="project-card__desc">Aplikasi reservasi gym dengan Midtrans Payment Gateway, role management, dan REST API.</div>
-        <div class="project-card__tags"><span class="skill-tag">Laravel</span><span class="skill-tag">Midtrans</span><span class="skill-tag">MySQL</span></div>
-      </div>
-      <div class="project-card reveal reveal-delay-5" data-category="fullstack">
-        <div class="project-card__img">👟</div>
-        <div class="project-card__title">RunShoes E-commerce</div>
-        <div class="project-card__meta">Full-Stack · Laravel MVC</div>
-        <div class="project-card__desc">E-commerce sepatu olahraga: katalog produk, keranjang belanja, checkout, dan manajemen stok.</div>
-        <div class="project-card__tags"><span class="skill-tag">Laravel MVC</span><span class="skill-tag">MySQL</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Contact -->
-<section class="section-alt" id="contact">
-  <div class="container">
-    <h2 class="section-title reveal" style="text-align:center">Hubungi Saya</h2>
-    <p class="section-subtitle reveal" style="text-align:center">Tertarik bekerja sama? Jangan ragu untuk menghubungi saya.</p>
-    <div class="contact-grid">
-      <div class="reveal">
-        <div class="contact-info__item">
-          <div class="contact-info__icon">✉</div>
-          <div class="contact-info__text">
-            <div class="contact-info__label">Email</div>
-            <a href="mailto:suryafc349@gmail.com">suryafc349@gmail.com</a>
-          </div>
-        </div>
-        <div class="contact-info__item">
-          <div class="contact-info__icon">🔗</div>
-          <div class="contact-info__text">
-            <div class="contact-info__label">LinkedIn</div>
-            <a href="https://www.linkedin.com/in/surya-dwi-satria-3741bb258/" target="_blank">Surya Dwi Satria</a>
-          </div>
-        </div>
-        <div class="contact-info__item">
-          <div class="contact-info__icon">📱</div>
-          <div class="contact-info__text">
-            <div class="contact-info__label">Phone</div>
-            <a href="tel:085730033426">085730033426</a>
-          </div>
-        </div>
-        <div class="contact-socials">
-          <a href="https://www.linkedin.com/in/surya-dwi-satria-3741bb258/" target="_blank" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-          <a href="mailto:suryafc349@gmail.com" aria-label="Email">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          </a>
-        </div>
-      </div>
-      <form class="reveal" action="mailto:suryafc349@gmail.com" method="post" enctype="text/plain">
-        <div class="form-group">
-          <label class="form-label" for="name">Nama</label>
-          <input class="form-input" type="text" id="name" name="name" required/>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="email">Email</label>
-          <input class="form-input" type="email" id="email" name="email" required/>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="message">Pesan</label>
-          <textarea class="form-textarea" id="message" name="message" required></textarea>
-        </div>
-        <button type="submit" class="btn-submit">Kirim Pesan</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="footer">
-  <div class="footer__logo">SDS.</div>
-  <div class="footer__links">
+  <!-- Mobile Nav -->
+  <div class="mobile-nav">
     <a href="#home">Home</a>
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
+    <a href="#organization">Organisasi</a>
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
+    <a href="assets/cv/cv.pdf" class="btn-primary" style="margin-top:1rem" download>Download CV</a>
   </div>
-  <div class="footer__socials">
-    <a href="https://www.linkedin.com/in/surya-dwi-satria-3741bb258/" target="_blank" aria-label="LinkedIn">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-    </a>
-    <a href="mailto:suryafc349@gmail.com" aria-label="Email">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-    </a>
-  </div>
-  <p class="footer__copy">© 2026 Surya Dwi Satria. All rights reserved.</p>
-  <a href="#home" class="back-to-top">↑ Back to Top</a>
-</footer>
 
-<script src="js/main.js"></script>
-<script src="js/animations.js"></script>
-<script src="js/projects.js"></script>
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero__photo-flip reveal">
+      <div class="hero__photo-inner">
+        <div class="hero__photo-front">
+          <img src="assets/images/profile.jpg" alt="Surya Dwi Satria - Front" />
+        </div>
+        <div class="hero__photo-back">
+          <img src="assets/images/profile-back.jpg" alt="Surya Dwi Satria - Back" />
+        </div>
+      </div>
+    </div>
+    <h1 class="hero__title reveal reveal-delay-1">Halo, saya Surya Dwi Satria.</h1>
+    <div class="hero__typing reveal reveal-delay-2">
+      <span id="typing-text"></span><span class="typing-cursor"></span>
+    </div>
+    <p class="hero__gpa reveal reveal-delay-3">Universitas Airlangga · Diploma · GPA 3.35</p>
+    <div class="hero__cta reveal reveal-delay-4">
+      <a href="#projects" class="btn-primary">Lihat Proyek</a>
+      <a href="assets/cv/cv.pdf" class="btn-outline" download>Download CV</a>
+    </div>
+  </section>
+
+  <!-- About & Skills -->
+  <section class="section-alt" id="about">
+    <div class="container">
+      <!-- Stats -->
+      <div class="stats reveal">
+        <div class="stat-card">
+          <div class="stat-card__number" data-count="7+">0</div>
+          <div class="stat-card__label">Projects</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number" data-count="5">0</div>
+          <div class="stat-card__label">Organisasi</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number" data-count="3.34">0</div>
+          <div class="stat-card__label">IPK</div>
+        </div>
+      </div>
+
+      <h2 class="section-title reveal">About &amp; Skills</h2>
+      <p class="section-subtitle reveal">
+        Seorang Fullstack Developer dengan latar belakang pendidikan di bidang IT di Universitas Airlangga, Surabaya.
+        Terbiasa membangun aplikasi web menggunakan Laravel, Golang, dan REST API.
+        Memiliki pemahaman clean architecture untuk pengembangan backend yang terstruktur dan mudah diuji.
+        Fokus pada kualitas kode, efisiensi sistem, dan kolaborasi tim melalui Git.
+      </p>
+
+      <div class="skills reveal">
+        <span class="skill-tag">Laravel</span>
+        <span class="skill-tag">Golang</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Go Fiber</span>
+        <span class="skill-tag">Go Gin</span>
+        <span class="skill-tag">FastAPI</span>
+        <span class="skill-tag">REST API</span>
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">MongoDB</span>
+        <span class="skill-tag">Supabase</span>
+        <span class="skill-tag">HTML / CSS</span>
+        <span class="skill-tag">JWT</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">Postman</span>
+        <span class="skill-tag">Spreadsheet</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Timeline -->
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title reveal">Work Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-item__dot"></div>
+          <p class="timeline-item__date">Aug 2025 – Present</p>
+          <h3 class="timeline-item__title">Golang Clean Architecture Project</h3>
+          <p class="timeline-item__role">Backend Developer · Personal Project</p>
+          <p class="timeline-item__desc">Membuat backend service dengan Golang Clean Architecture. Menguji API
+            menggunakan Postman (CRUD, autentikasi user, middleware). Menghubungkan service dengan PostgreSQL sebagai
+            penyimpanan data.</p>
+          <div class="timeline-item__tags"><span class="skill-tag">Go</span><span class="skill-tag">Clean
+              Architecture</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">Postman</span></div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-item__dot timeline-item__dot--muted"></div>
+          <p class="timeline-item__date">Nov 2025</p>
+          <h3 class="timeline-item__title">Student System Report (Go Fiber)</h3>
+          <p class="timeline-item__role">Backend Developer · Final Task</p>
+          <p class="timeline-item__desc">Sistem pelaporan siswa berfokus pada performa tinggi dan desain modular.
+            Merancang Clean Architecture untuk memisahkan logika bisnis, membangun API berkecepatan tinggi menggunakan
+            Go Fiber, dan mengelola basis data PostgreSQL.</p>
+          <div class="timeline-item__tags"><span class="skill-tag">Go Fiber</span><span
+              class="skill-tag">PostgreSQL</span><span class="skill-tag">Clean Architecture</span></div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-item__dot timeline-item__dot--muted"></div>
+          <p class="timeline-item__date">Dec 2025</p>
+          <h3 class="timeline-item__title">Home Market (Go Gin API)</h3>
+          <p class="timeline-item__role">Backend Developer · Personal Project</p>
+          <p class="timeline-item__desc">RESTful API untuk platform e-commerce barang rumahan. Mengimplementasikan
+            autentikasi JWT, menangani katalog produk, inventaris, checkout, dan mengelola basis data MongoDB/MySQL.</p>
+          <div class="timeline-item__tags"><span class="skill-tag">Go Gin</span><span
+              class="skill-tag">MongoDB</span><span class="skill-tag">JWT</span><span class="skill-tag">MySQL</span>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-item__dot timeline-item__dot--muted"></div>
+          <p class="timeline-item__date">Aug – Sep 2025</p>
+          <h3 class="timeline-item__title">Laravel-FastAPI-ML (Integrated Web)</h3>
+          <p class="timeline-item__role">Full-Stack / ML Integration Engineer · Personal Project</p>
+          <p class="timeline-item__desc">Platform web terintegrasi menggunakan Laravel untuk antarmuka pengguna dan
+            FastAPI untuk menyajikan model AI. Merancang integrasi RESTful antara Laravel dan core prediksi Python
+            FastAPI untuk komunikasi data real-time.</p>
+          <div class="timeline-item__tags"><span class="skill-tag">Laravel</span><span
+              class="skill-tag">FastAPI</span><span class="skill-tag">Python</span><span class="skill-tag">Machine
+              Learning</span></div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-item__dot timeline-item__dot--muted"></div>
+          <p class="timeline-item__date">Jan – May 2024</p>
+          <h3 class="timeline-item__title">Gym Reservation System</h3>
+          <p class="timeline-item__role">Full-Stack · Surabaya</p>
+          <p class="timeline-item__desc">Aplikasi reservasi gym berbasis Laravel dengan integrasi Midtrans Payment
+            Gateway. Menerapkan role management, filtering, dan API untuk mendukung fitur admin dan user. MySQL sebagai
+            database utama.</p>
+          <div class="timeline-item__tags"><span class="skill-tag">Laravel</span><span
+              class="skill-tag">Midtrans</span><span class="skill-tag">MySQL</span><span class="skill-tag">REST
+              API</span></div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-item__dot timeline-item__dot--muted"></div>
+          <p class="timeline-item__date">2025</p>
+          <h3 class="timeline-item__title">RunShoes E-commerce Website</h3>
+          <p class="timeline-item__role">Full-Stack</p>
+          <p class="timeline-item__desc">Website e-commerce sepatu olahraga menggunakan Laravel MVC dan MySQL. Fitur:
+            katalog produk, keranjang belanja, checkout, serta manajemen stok barang.</p>
+          <div class="timeline-item__tags"><span class="skill-tag">Laravel MVC</span><span
+              class="skill-tag">MySQL</span></div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-item__dot timeline-item__dot--muted"></div>
+          <p class="timeline-item__date">2025</p>
+          <h3 class="timeline-item__title">Weekly Spend Tracker</h3>
+          <p class="timeline-item__role">Data Analyst · Personal Project</p>
+          <p class="timeline-item__desc">Sistem pencatatan dan analisis pengeluaran pribadi berbasis spreadsheet dengan
+            kategorisasi otomatis (makan, transportasi, parkir, kebutuhan, dll). Rekapitulasi otomatis untuk menghitung
+            total pengeluaran per kategori dan periode tertentu.</p>
+          <div class="timeline-item__tags"><span class="skill-tag">Spreadsheet</span><span class="skill-tag">Data
+              Analysis</span><span class="skill-tag">Automation</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Organization -->
+  <section class="section-alt" id="organization">
+    <div class="container">
+      <h2 class="section-title reveal">Pengalaman Organisasi</h2>
+      <div class="org-grid">
+        <div class="org-card reveal reveal-delay-1">
+          <div class="org-card__title">Airlangga University – Pondok Maslahatul Ummah</div>
+          <div class="org-card__role">Koordinator Lapangan &amp; Divisi Sosial</div>
+          <div class="org-card__date">Sep – Nov 2023 · Surabaya</div>
+          <div class="org-card__desc">Mengamankan lokasi untuk acara pelayanan sosial, mengkoordinasikan pelaksanaan
+            acara dengan pihak pesantren, dan menjadi MC saat sesi pertunjukan berlangsung.</div>
+        </div>
+        <div class="org-card reveal reveal-delay-2">
+          <div class="org-card__title">HIMTI AI Cybernetics Guest Lecture</div>
+          <div class="org-card__role">Public Relations &amp; Licensing</div>
+          <div class="org-card__date">Mar – Apr 2024 · Kampus C Unair</div>
+          <div class="org-card__desc">Mengurus perizinan acara, mengatur koordinasi dan logistik acara dengan
+            stakeholder, dan membimbing peserta menuju venue acara.</div>
+        </div>
+        <div class="org-card reveal reveal-delay-3">
+          <div class="org-card__title">Airlangga Open Competition</div>
+          <div class="org-card__role">Sponsorship</div>
+          <div class="org-card__date">Jul – Sep 2024 · Universitas Airlangga</div>
+          <div class="org-card__desc">Mencari dan menghubungi sponsor potensial. Menjaga komunikasi dengan sponsor untuk
+            kebutuhan acara.</div>
+        </div>
+        <div class="org-card reveal reveal-delay-4">
+          <div class="org-card__title">HIMTI 2024 Initiation Event</div>
+          <div class="org-card__role">Companion Brother</div>
+          <div class="org-card__date">Aug – Dec 2024 · Universitas Airlangga</div>
+          <div class="org-card__desc">Menjadi penghubung antara panitia dan peserta selama kegiatan orientasi. Membantu
+            kelancaran informasi dan aktivitas selama acara.</div>
+        </div>
+        <div class="org-card reveal reveal-delay-5">
+          <div class="org-card__title">Teknik CUP – Kampus B Unair</div>
+          <div class="org-card__role">Divisi Acara</div>
+          <div class="org-card__date">Sep – Dec 2024 · Universitas Airlangga</div>
+          <div class="org-card__desc">Bekerja sama dengan 30 panitia untuk menyukseskan acara olahraga antar 3 jurusan
+            Teknik. Mengkoordinir waktu dan kontrol jalannya pertandingan.</div>
+        </div>
+        <div class="org-card reveal reveal-delay-6">
+          <div class="org-card__title">HIMTI CARES</div>
+          <div class="org-card__role">Master of Ceremony (MC)</div>
+          <div class="org-card__date">Pacet · Universitas Airlangga</div>
+          <div class="org-card__desc">Bertugas sebagai MC dalam kegiatan pengabdian masyarakat HIMTI CARES di Pacet,
+            memandu jalannya acara dari pembukaan hingga penutupan. Berkoordinasi dengan tim divisi acara untuk menjaga
+            kelancaran pelaksanaan kegiatan dan memastikan setiap sesi berjalan sesuai rundown.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title reveal" style="text-align:center">Projects</h2>
+      <div class="filter-tabs reveal">
+        <button class="filter-tab active" data-filter="all">All</button>
+        <button class="filter-tab" data-filter="backend">Backend</button>
+        <button class="filter-tab" data-filter="fullstack">Full-Stack</button>
+        <button class="filter-tab" data-filter="ml">ML</button>
+        <button class="filter-tab" data-filter="data">Data</button>
+      </div>
+      <div class="projects-grid">
+        <a class="project-card reveal" data-category="backend" href="https://github.com/masterlearn22/go_clean.git"
+          target="_blank" rel="noopener noreferrer">
+          <div class="project-card__img">⚙️</div>
+          <div class="project-card__title">Golang Clean Architecture</div>
+          <div class="project-card__meta">Backend · Golang</div>
+          <div class="project-card__desc">Backend service dengan Clean Architecture pattern. CRUD, autentikasi,
+            middleware, dan PostgreSQL.</div>
+          <div class="project-card__tags"><span class="skill-tag">Go</span><span
+              class="skill-tag">PostgreSQL</span><span class="skill-tag">Postman</span></div>
+        </a>
+        <a class="project-card reveal reveal-delay-1" data-category="backend"
+          href="https://github.com/masterlearn22/student-performance-report_Fiber.git" target="_blank"
+          rel="noopener noreferrer">
+          <div class="project-card__img">📊</div>
+          <div class="project-card__title">Student System Report</div>
+          <div class="project-card__meta">Backend · Go Fiber</div>
+          <div class="project-card__desc">Sistem pelaporan siswa high-performance dengan desain modular dan Clean
+            Architecture.</div>
+          <div class="project-card__tags"><span class="skill-tag">Go Fiber</span><span
+              class="skill-tag">PostgreSQL</span></div>
+        </a>
+        <a class="project-card reveal reveal-delay-2" data-category="backend"
+          href="https://github.com/masterlearn22/home-market_GinFramework.git" target="_blank"
+          rel="noopener noreferrer">
+          <div class="project-card__img">🏪</div>
+          <div class="project-card__title">Home Market API</div>
+          <div class="project-card__meta">Backend · Go Gin</div>
+          <div class="project-card__desc">RESTful API e-commerce barang rumahan dengan JWT auth, katalog, inventaris,
+            dan checkout.</div>
+          <div class="project-card__tags"><span class="skill-tag">Go Gin</span><span
+              class="skill-tag">MongoDB</span><span class="skill-tag">JWT</span></div>
+        </a>
+        <a class="project-card reveal reveal-delay-3" data-category="ml"
+          href="https://github.com/masterlearn22/ML-Prediction-Hub-Core.git" target="_blank" rel="noopener noreferrer">
+          <div class="project-card__img">🤖</div>
+          <div class="project-card__title">Laravel-FastAPI-ML</div>
+          <div class="project-card__meta">ML Integration · Laravel + Python</div>
+          <div class="project-card__desc">Platform web terintegrasi Laravel + FastAPI untuk menyajikan model Machine
+            Learning secara real-time.</div>
+          <div class="project-card__tags"><span class="skill-tag">Laravel</span><span
+              class="skill-tag">FastAPI</span><span class="skill-tag">Python</span></div>
+        </a>
+        <a class="project-card reveal reveal-delay-4" data-category="fullstack"
+          href="https://github.com/masterlearn22/GYMLOC.Reservavation_Gym.git" target="_blank"
+          rel="noopener noreferrer">
+          <div class="project-card__img">🏋️</div>
+          <div class="project-card__title">Gym Reservation System</div>
+          <div class="project-card__meta">Full-Stack · Laravel</div>
+          <div class="project-card__desc">Aplikasi reservasi gym dengan Midtrans Payment Gateway, role management, dan
+            REST API.</div>
+          <div class="project-card__tags"><span class="skill-tag">Laravel</span><span
+              class="skill-tag">Midtrans</span><span class="skill-tag">MySQL</span></div>
+        </a>
+        <a class="project-card reveal reveal-delay-5" data-category="fullstack"
+          href="https://github.com/masterlearn22/RunSR-Running-Shoes-Reference.git" target="_blank"
+          rel="noopener noreferrer">
+          <div class="project-card__img">👟</div>
+          <div class="project-card__title">RunShoes E-commerce</div>
+          <div class="project-card__meta">Full-Stack · Laravel MVC</div>
+          <div class="project-card__desc">E-commerce sepatu olahraga: katalog produk, keranjang belanja, checkout, dan
+            manajemen stok.</div>
+          <div class="project-card__tags"><span class="skill-tag">Laravel MVC</span><span class="skill-tag">MySQL</span>
+          </div>
+        </a>
+        <a class="project-card reveal reveal-delay-6" data-category="data"
+          href="https://docs.google.com/spreadsheets/d/1DkIR6vosyWDD9sIbOH9oOKbhuZeanBjdMd81K6Bfg9g/edit?usp=sharing"
+          target="_blank" rel="noopener noreferrer">
+          <div class="project-card__img">💰</div>
+          <div class="project-card__title">Weekly Spend Tracker</div>
+          <div class="project-card__meta">Data · Spreadsheet</div>
+          <div class="project-card__desc">Sistem pencatatan dan analisis pengeluaran pribadi berbasis spreadsheet dengan
+            kategorisasi otomatis (makan, transportasi, parkir, kebutuhan, dll). Rekapitulasi otomatis per kategori dan
+            periode.</div>
+          <div class="project-card__tags"><span class="skill-tag">Spreadsheet</span><span class="skill-tag">Data
+              Analysis</span><span class="skill-tag">Automation</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section-alt" id="contact">
+    <div class="container">
+      <h2 class="section-title reveal" style="text-align:center">Hubungi Saya</h2>
+      <p class="section-subtitle reveal" style="text-align:center">Tertarik bekerja sama? Jangan ragu untuk menghubungi
+        saya.</p>
+      <div class="contact-grid">
+        <div class="reveal">
+          <div class="contact-info__item">
+            <div class="contact-info__icon">✉</div>
+            <div class="contact-info__text">
+              <div class="contact-info__label">Email</div>
+              <a href="mailto:suryafc349@gmail.com">suryafc349@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-info__item">
+            <div class="contact-info__icon">🔗</div>
+            <div class="contact-info__text">
+              <div class="contact-info__label">LinkedIn</div>
+              <a href="https://www.linkedin.com/in/surya-dwi-satria-3741bb258/" target="_blank">Surya Dwi Satria</a>
+            </div>
+          </div>
+          <div class="contact-info__item">
+            <div class="contact-info__icon">📱</div>
+            <div class="contact-info__text">
+              <div class="contact-info__label">Phone</div>
+              <a href="tel:085730033426">085730033426</a>
+            </div>
+          </div>
+          <div class="contact-socials">
+            <a href="https://www.linkedin.com/in/surya-dwi-satria-3741bb258/" target="_blank" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+            </a>
+            <a href="mailto:suryafc349@gmail.com" aria-label="Email">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <form class="reveal" action="mailto:suryafc349@gmail.com" method="post" enctype="text/plain">
+          <div class="form-group">
+            <label class="form-label" for="name">Nama</label>
+            <input class="form-input" type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-input" type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">Pesan</label>
+            <textarea class="form-textarea" id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Kirim Pesan</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__logo">SDS.</div>
+    <div class="footer__links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer__socials">
+      <a href="https://www.linkedin.com/in/surya-dwi-satria-3741bb258/" target="_blank" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+        </svg>
+      </a>
+      <a href="mailto:suryafc349@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+        </svg>
+      </a>
+    </div>
+    <p class="footer__copy">© 2026 Surya Dwi Satria. All rights reserved.</p>
+    <a href="#home" class="back-to-top">↑ Back to Top</a>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/projects.js"></script>
 </body>
+
 </html>
