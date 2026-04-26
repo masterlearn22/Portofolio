@@ -1,52 +1,70 @@
-// === Navbar scroll shrink ===
-const navbar = document.querySelector('.navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 50);
-});
+document.addEventListener('DOMContentLoaded', () => {
 
-// === Active nav link on scroll ===
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.navbar__links a[href^="#"]');
+  // === Fullscreen Menu Toggle ===
+  const menuToggle = document.querySelector('.menu-toggle');
+  const body = document.body;
+  const menuLinks = document.querySelectorAll('.menu-link');
 
-function updateActiveNav() {
-  const scrollY = window.scrollY + 120;
+  function toggleMenu() {
+    body.classList.toggle('menu-open');
+  }
+
+  menuToggle.addEventListener('click', toggleMenu);
+
+  // Close menu when a link is clicked
+  menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (body.classList.contains('menu-open')) {
+        toggleMenu();
+      }
+    });
+  });
+
+
+  // === Side Navigation Active State ===
+  const sections = document.querySelectorAll('.section');
+  const navDots = document.querySelectorAll('.nav-dot');
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5 // Section is active when 50% visible
+  };
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Remove active class from all dots
+        navDots.forEach(dot => dot.classList.remove('active'));
+        
+        // Find corresponding dot and add active class
+        const id = entry.target.getAttribute('id');
+        const activeDot = document.querySelector(`.nav-dot[href="#${id}"]`);
+        if (activeDot) {
+          activeDot.classList.add('active');
+        }
+      }
+    });
+  }, observerOptions);
+
   sections.forEach(section => {
-    const top = section.offsetTop;
-    const height = section.offsetHeight;
-    const id = section.getAttribute('id');
-    const link = document.querySelector(`.navbar__links a[href="#${id}"]`);
-    if (link) {
-      link.classList.toggle('active', scrollY >= top && scrollY < top + height);
-    }
+    sectionObserver.observe(section);
   });
-}
-window.addEventListener('scroll', updateActiveNav);
 
-// === Hamburger menu ===
-const hamburger = document.querySelector('.hamburger');
-const mobileNav = document.querySelector('.mobile-nav');
-
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('open');
-  mobileNav.classList.toggle('open');
-  document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
-});
-
-document.querySelectorAll('.mobile-nav a').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('open');
-    mobileNav.classList.remove('open');
-    document.body.style.overflow = '';
+  // === Smooth Scroll for Links ===
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        targetElement.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+    });
   });
-});
 
-// === Smooth scroll for CTA ===
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  // Skip project cards — let them navigate to their links
-  if (anchor.classList.contains('project-card')) return;
-  anchor.addEventListener('click', e => {
-    e.preventDefault();
-    const target = document.querySelector(anchor.getAttribute('href'));
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
 });
