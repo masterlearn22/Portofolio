@@ -715,41 +715,41 @@ body.dark-theme {
 }
 
 /* === Projects === */
-.filter-tabs {
-  margin-bottom: 3rem;
+.projects-carousel {
+  width: 100vw; /* Bleed to edges */
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  padding: 2rem 0;
+}
+
+.projects-track {
   display: flex;
+  flex-wrap: nowrap;
   gap: 2rem;
+  width: max-content;
+  animation: scrollCarousel 40s linear infinite;
 }
 
-.filter-tab {
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  cursor: pointer;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid transparent;
-  transition: all 0.3s;
+.projects-carousel:hover .projects-track {
+  animation-play-state: paused;
 }
 
-.filter-tab.active, .filter-tab:hover {
-  color: #fff;
-  border-bottom-color: var(--accent);
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 3rem;
+@keyframes scrollCarousel {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .project-card {
   text-decoration: none;
   display: block;
-  group: hover;
+  flex: 0 0 clamp(300px, 40vw, 600px);
 }
+
+
 
 .project-card__img-wrapper {
   position: relative;
@@ -936,7 +936,7 @@ body.dark-theme {
 }
 
 @media (max-width: 768px) {
-  .projects-grid, .stats {
+  .stats {
     grid-template-columns: 1fr;
   }
 }
