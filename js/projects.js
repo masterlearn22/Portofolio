@@ -86,7 +86,7 @@ if (projectsCarousel && projectsTrack) {
   });
 }
 
-// === 3D Tech Orbit Engine (Optimized) ===
+// === 3D Tech Orbit Engine (High Performance) ===
 const orbitSystem = document.getElementById('techOrbitSystem');
 if (orbitSystem) {
   const techIcons = [
@@ -109,7 +109,6 @@ if (orbitSystem) {
 
   const satellitesData = [];
 
-  // Pre-calculate tilt sin/cos for each satellite (avoid recalculating every frame)
   techIcons.forEach((iconHTML, index) => {
     const rx = 100 + (index * 12) + (Math.random() * 20);
     const ry = rx * (0.3 + Math.random() * 0.4);
@@ -122,16 +121,23 @@ if (orbitSystem) {
     sat.innerHTML = iconHTML;
     orbitSystem.appendChild(sat);
 
-    satellitesData.push({
+    const data = {
       el: sat,
       rx, ry,
       cosTilt: Math.cos(tilt),
       sinTilt: Math.sin(tilt),
-      speed, angle
-    });
+      speed, angle,
+      isHovered: false,
+      currentScale: 1,
+      targetScale: 1
+    };
+
+    sat.addEventListener('mouseenter', () => data.targetScale = 1.4);
+    sat.addEventListener('mouseleave', () => data.targetScale = 1);
+    
+    satellitesData.push(data);
   });
 
-  // Only create 3 decorative rings (not 15)
   const ringConfigs = [
     { rx: 120, ry: 60, tilt: 0.5 },
     { rx: 200, ry: 90, tilt: 2.1 },
@@ -146,7 +152,6 @@ if (orbitSystem) {
     orbitSystem.appendChild(ring);
   });
 
-  // Pause animation when section is not visible (huge perf win on mobile)
   let orbitRunning = false;
   let orbitRAF = null;
 
@@ -154,6 +159,9 @@ if (orbitSystem) {
     for (let i = 0; i < satellitesData.length; i++) {
       const d = satellitesData[i];
       d.angle += d.speed;
+
+      // Smooth scale interpolation for hover
+      d.currentScale += (d.targetScale - d.currentScale) * 0.15;
 
       const cosA = Math.cos(d.angle);
       const sinA = Math.sin(d.angle);
@@ -163,9 +171,11 @@ if (orbitSystem) {
       const rotatedY = x * d.sinTilt + y * d.cosTilt;
 
       const z = d.rx * sinA;
-      const scale = (z + 500) / 500;
+      const baseScale = (z + 500) / 500;
+      const finalScale = baseScale * d.currentScale;
 
-      d.el.style.transform = `translate(${rotatedX}px, ${rotatedY}px) scale(${scale})`;
+      // Use translate3d for GPU acceleration and batch updates
+      d.el.style.transform = `translate3d(${rotatedX}px, ${rotatedY}px, 0) scale(${finalScale})`;
       d.el.style.zIndex = Math.round(z + 1000);
       d.el.style.opacity = Math.min(1, Math.max(0.4, (z + 200) / 200));
     }
@@ -174,7 +184,6 @@ if (orbitSystem) {
     }
   }
 
-  // Use IntersectionObserver to only run animation when visible
   const orbitObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {

@@ -657,20 +657,21 @@ body.dark-theme {
   justify-content: center;
   align-items: center;
   font-size: 2.2rem;
-  will-change: transform;
-  contain: layout style;
+  will-change: transform, opacity;
+  pointer-events: auto;
 }
 
 .satellite i, .text-sat span {
-  transition: transform 0.3s;
+  /* Remove transform transitions to avoid conflict with JS loop */
+  pointer-events: none;
 }
 
 .satellite:hover {
   cursor: pointer;
 }
 
-.satellite:hover i, .satellite:hover span {
-  transform: scale(1.3);
+.satellite.is-hovered i, .satellite.is-hovered span {
+  /* Scale is handled in JS for performance */
 }
 
 .sat-label {
