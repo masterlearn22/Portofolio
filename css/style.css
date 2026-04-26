@@ -442,11 +442,57 @@ body.dark-theme {
 }
 
 /* === Hero === */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated Gradient Background */
+.hero-gradient-bg {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(255, 77, 90, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(120, 40, 200, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(255, 120, 50, 0.08) 0%, transparent 50%);
+  background-size: 200% 200%;
+  animation: gradient-drift 12s ease-in-out infinite alternate;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes gradient-drift {
+  0% { background-position: 0% 0%; }
+  25% { background-position: 100% 0%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
 .hero-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Staggered Hero Reveal Animation */
+.hero-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  filter: blur(10px);
+  animation: hero-stagger 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes hero-stagger {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 
 .hero-subtitle {
@@ -460,10 +506,25 @@ body.dark-theme {
 
 .hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(3rem, 6vw, 5rem);
-  line-height: 1.1;
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  line-height: 1.05;
   margin-bottom: 1.5rem;
   font-weight: 700;
+}
+
+/* Text Gradient on Name */
+.text-gradient {
+  background: linear-gradient(135deg, #fff 0%, var(--accent) 50%, #ff9a6c 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: text-gradient-shift 4s ease infinite;
+}
+
+@keyframes text-gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .hero-typing {
@@ -490,6 +551,7 @@ body.dark-theme {
   margin-bottom: 3rem;
 }
 
+/* Magnetic Icon Wrappers */
 .hero-socials {
   display: flex;
   gap: 1.5rem;
@@ -498,24 +560,35 @@ body.dark-theme {
   margin-top: 1rem;
 }
 
-.hero-socials a {
+.magnetic-wrap {
+  display: inline-flex;
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.magnetic-wrap a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   color: var(--text-muted);
-  transition: all 0.3s;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: color 0.3s, background 0.3s, box-shadow 0.3s;
 }
 
-.hero-socials a:hover {
-  color: var(--accent);
-  transform: translateY(-3px);
+.magnetic-wrap a:hover {
+  color: #fff;
+  background: rgba(255, 77, 90, 0.15);
+  box-shadow: 0 0 20px rgba(255, 77, 90, 0.3);
 }
 
+/* Parallax Image */
 .hero-image-wrapper {
   position: relative;
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
+  transition: transform 0.1s ease-out;
 }
 
 .hero-image-wrapper::after {
@@ -527,6 +600,11 @@ body.dark-theme {
   height: 100%;
   border: 1px solid var(--accent);
   z-index: -1;
+  transition: transform 0.3s;
+}
+
+.hero-image-wrapper:hover::after {
+  transform: translate(5px, 5px);
 }
 
 /* Duotone Effect */
@@ -561,6 +639,52 @@ body.dark-theme {
 }
 .hero-image-wrapper:hover .duotone-image::before {
   opacity: 0;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 2;
+}
+
+.scroll-indicator span {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+}
+
+.scroll-indicator__mouse {
+  width: 22px;
+  height: 36px;
+  border: 2px solid var(--text-muted);
+  border-radius: 12px;
+  position: relative;
+  opacity: 0.6;
+}
+
+.scroll-indicator__wheel {
+  width: 3px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 2px;
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scroll-bounce 2s ease-in-out infinite;
+}
+
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+  50% { transform: translateX(-50%) translateY(12px); opacity: 0.2; }
 }
 
 /* === About === */

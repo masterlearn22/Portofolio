@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  // Detect if device supports touch
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
   // === Custom Cursor ===
   const cursorDot = document.querySelector('.cursor-dot');
   const cursorRing = document.querySelector('.cursor-ring');
@@ -12,8 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let ringX = 0;
     let ringY = 0;
 
-    // Detect if device supports touch to hide cursor
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     
     if (!isTouchDevice) {
       document.addEventListener('mousemove', (e) => {
@@ -130,5 +131,36 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.5 });
 
   counters.forEach(el => counterObserver.observe(el));
+
+  // === Magnetic Social Icons ===
+  const magneticWraps = document.querySelectorAll('.magnetic-wrap');
+  if (!isTouchDevice) {
+    magneticWraps.forEach(wrap => {
+      wrap.addEventListener('mousemove', (e) => {
+        const rect = wrap.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        wrap.style.transform = `translate(${x * 0.4}px, ${y * 0.4}px)`;
+      });
+      wrap.addEventListener('mouseleave', () => {
+        wrap.style.transform = 'translate(0, 0)';
+      });
+    });
+  }
+
+  // === Hero Image Parallax (Mouse Tracking) ===
+  const heroImage = document.getElementById('heroImageWrapper');
+  const heroSection = document.getElementById('home');
+  if (heroImage && heroSection && !isTouchDevice) {
+    heroSection.addEventListener('mousemove', (e) => {
+      const rect = heroSection.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 to 0.5
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      heroImage.style.transform = `translate(${x * 20}px, ${y * 15}px)`;
+    });
+    heroSection.addEventListener('mouseleave', () => {
+      heroImage.style.transform = 'translate(0, 0)';
+    });
+  }
 
 });
