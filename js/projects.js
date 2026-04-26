@@ -86,6 +86,96 @@ if (projectsCarousel && projectsTrack) {
   });
 }
 
+// === UI/UX Infinite Carousel (Reverse Direction) ===
+const uiuxCarousel = document.querySelector('.projects-carousel--reverse');
+const uiuxTrack = document.getElementById('uiuxProjectsTrack');
+
+if (uiuxCarousel && uiuxTrack) {
+  const originalCards = Array.from(uiuxTrack.children);
+  
+  // Clone cards twice for safe infinite scrolling
+  for (let i = 0; i < 2; i++) {
+    originalCards.forEach(card => {
+      const clone = card.cloneNode(true);
+      uiuxTrack.appendChild(clone);
+    });
+  }
+
+  let isPaused = false;
+  let isDragging = false;
+  let startX;
+  let scrollLeft;
+  let resetPosition = 0;
+
+  const calculateResetPosition = () => {
+    const firstClone = originalCards[originalCards.length - 1].nextElementSibling;
+    if (firstClone) {
+      resetPosition = firstClone.offsetLeft - originalCards[0].offsetLeft;
+    }
+  };
+
+  setTimeout(() => {
+    calculateResetPosition();
+    // Start scrolled to the middle (one set in) so we can scroll left immediately
+    uiuxCarousel.scrollLeft = resetPosition;
+  }, 500);
+  window.addEventListener('resize', calculateResetPosition);
+
+  const autoScroll = () => {
+    if (!isPaused && !isDragging && resetPosition > 0) {
+      uiuxCarousel.scrollLeft -= 1; // Reverse auto-scroll (scrolls LEFT)
+      
+      // Loop backward
+      if (uiuxCarousel.scrollLeft <= 0) {
+        uiuxCarousel.scrollLeft += resetPosition;
+      }
+      // Loop forward (if user drags right)
+      if (uiuxCarousel.scrollLeft >= resetPosition * 2) {
+        uiuxCarousel.scrollLeft -= resetPosition;
+      }
+    }
+    requestAnimationFrame(autoScroll);
+  };
+
+  requestAnimationFrame(autoScroll);
+
+  uiuxCarousel.addEventListener('mouseenter', () => isPaused = true);
+  uiuxCarousel.addEventListener('mouseleave', () => isPaused = false);
+
+  uiuxCarousel.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.pageX - uiuxCarousel.offsetLeft;
+    scrollLeft = uiuxCarousel.scrollLeft;
+    uiuxCarousel.style.cursor = 'grabbing';
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (isDragging) {
+      isDragging = false;
+      uiuxCarousel.style.cursor = 'grab';
+    }
+  });
+
+  uiuxCarousel.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - uiuxCarousel.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    
+    let newScrollLeft = scrollLeft - walk;
+    
+    if (newScrollLeft >= resetPosition * 2) {
+      newScrollLeft -= resetPosition;
+      scrollLeft -= resetPosition;
+    } else if (newScrollLeft <= 0) {
+      newScrollLeft += resetPosition;
+      scrollLeft += resetPosition;
+    }
+    
+    uiuxCarousel.scrollLeft = newScrollLeft;
+  });
+}
+
 // === Sprint Track Engine (Draggable + Auto-Scroll) ===
 const sprintLanes = document.querySelectorAll('.sprint-lane');
 sprintLanes.forEach((lane) => {

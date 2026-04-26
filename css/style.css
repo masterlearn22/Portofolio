@@ -859,6 +859,15 @@ body.dark-theme {
   cursor: grabbing;
 }
 
+.project-category-label {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
 .projects-track {
   display: flex;
   flex-wrap: nowrap;
