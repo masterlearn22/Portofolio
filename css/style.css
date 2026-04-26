@@ -679,6 +679,7 @@ body.dark-theme {
   align-items: center;
   font-size: 2.2rem;
   transition: transform 0.3s;
+  animation-delay: inherit;
 }
 
 .satellite i, .text-sat span {
