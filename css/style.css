@@ -638,15 +638,6 @@ body.dark-theme {
   z-index: 5000;
 }
 
-.orbit-ring {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  border: 1px dashed rgba(255, 255, 255, 0.15);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
 .satellite {
   position: absolute;
   top: 50%;

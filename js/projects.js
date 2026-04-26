@@ -138,20 +138,6 @@ if (orbitSystem) {
     satellitesData.push(data);
   });
 
-  const ringConfigs = [
-    { rx: 120, ry: 60, tilt: 0.5 },
-    { rx: 200, ry: 90, tilt: 2.1 },
-    { rx: 270, ry: 120, tilt: 4.2 }
-  ];
-  ringConfigs.forEach(cfg => {
-    const ring = document.createElement('div');
-    ring.className = 'orbit-ring';
-    ring.style.width = `${cfg.rx * 2}px`;
-    ring.style.height = `${cfg.ry * 2}px`;
-    ring.style.transform = `translate(-50%, -50%) rotate(${cfg.tilt}rad)`;
-    orbitSystem.appendChild(ring);
-  });
-
   let orbitRunning = false;
   let orbitRAF = null;
 
