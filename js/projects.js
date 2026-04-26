@@ -96,10 +96,23 @@ sprintLanes.forEach((lane) => {
   const isReverse = lane.classList.contains('lane-reverse');
   const speed = isReverse ? -1.5 : 1.5;
 
-  const contentBlock = lane.querySelector('.sprint-track-content');
-  if (!contentBlock) return;
+  const contentBlocks = lane.querySelectorAll('.sprint-track-content');
+  if (contentBlocks.length < 2) return;
   
-  let contentWidth = contentBlock.offsetWidth;
+  const contentBlock1 = contentBlocks[0];
+  const contentBlock2 = contentBlocks[1];
+
+  // Dynamically clone icons until the block is wider than the screen
+  // This guarantees infinite scrolling works perfectly on any screen size
+  const originalIcons = Array.from(contentBlock1.children);
+  while (contentBlock1.offsetWidth < window.innerWidth * 1.5) {
+    originalIcons.forEach(icon => {
+      contentBlock1.appendChild(icon.cloneNode(true));
+      contentBlock2.appendChild(icon.cloneNode(true));
+    });
+  }
+  
+  let contentWidth = contentBlock1.offsetWidth;
 
   if (isReverse) {
     lane.scrollLeft = contentWidth;
@@ -156,7 +169,7 @@ sprintLanes.forEach((lane) => {
   });
 
   const autoScrollLane = () => {
-    contentWidth = contentBlock.offsetWidth;
+    contentWidth = contentBlock1.offsetWidth;
     if (!isDown && !isHovered && contentWidth > 0) {
       lane.scrollLeft += speed;
       if (!isReverse) {

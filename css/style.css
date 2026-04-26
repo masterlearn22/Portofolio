@@ -645,6 +645,7 @@ body.dark-theme {
   position: relative;
   border-bottom: 1px solid rgba(255, 77, 90, 0.1);
   padding-bottom: 1.5rem;
+  padding-top: 2.5rem;
   overflow-x: auto;
   scrollbar-width: none;
   cursor: grab;
@@ -675,8 +676,8 @@ body.dark-theme {
 .sprint-track-content {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  min-width: 100vw;
+  gap: 5rem;
+  padding-right: 5rem;
   pointer-events: auto; /* Re-enable clicks on icons */
 }
 
