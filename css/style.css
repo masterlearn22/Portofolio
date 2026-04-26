@@ -364,6 +364,7 @@ body.dark-theme {
   display: flex;
   align-items: center;
   scroll-snap-align: start;
+  min-height: 100vh;
 }
 
 .section-bg-text {
