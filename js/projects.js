@@ -86,7 +86,7 @@ if (projectsCarousel && projectsTrack) {
   });
 }
 
-// === 3D Tech Orbit Engine ===
+// === 3D Tech Orbit Engine (Optimized) ===
 const orbitSystem = document.getElementById('techOrbitSystem');
 if (orbitSystem) {
   const techIcons = [
@@ -109,57 +109,88 @@ if (orbitSystem) {
 
   const satellitesData = [];
 
+  // Pre-calculate tilt sin/cos for each satellite (avoid recalculating every frame)
   techIcons.forEach((iconHTML, index) => {
-    // Generate random 3D orbit parameters
-    // Spread radius between 100px and 280px
-    const rx = 100 + (index * 12) + (Math.random() * 20); 
-    const ry = rx * (0.3 + Math.random() * 0.4); // Elliptical squash for 3D perspective
-    const tilt = Math.random() * Math.PI * 2; // Random 3D tilt of the orbit plane
-    const speed = (0.003 + Math.random() * 0.004) * (index % 2 === 0 ? 1 : -1); // Random speed & direction
-    const angle = Math.random() * Math.PI * 2; // Random start position
+    const rx = 100 + (index * 12) + (Math.random() * 20);
+    const ry = rx * (0.3 + Math.random() * 0.4);
+    const tilt = Math.random() * Math.PI * 2;
+    const speed = (0.003 + Math.random() * 0.004) * (index % 2 === 0 ? 1 : -1);
+    const angle = Math.random() * Math.PI * 2;
 
-    // Create background ring
-    const ring = document.createElement('div');
-    ring.className = 'orbit-ring';
-    ring.style.width = `${rx * 2}px`;
-    ring.style.height = `${ry * 2}px`;
-    // The CSS transform matches the 2D tilt of the JS calculation
-    ring.style.transform = `translate(-50%, -50%) rotate(${tilt}rad)`;
-    orbitSystem.appendChild(ring);
-
-    // Create Satellite
     const sat = document.createElement('div');
     sat.className = 'satellite';
     sat.innerHTML = iconHTML;
     orbitSystem.appendChild(sat);
 
-    satellitesData.push({ el: sat, rx, ry, tilt, speed, angle });
+    satellitesData.push({
+      el: sat,
+      rx, ry,
+      cosTilt: Math.cos(tilt),
+      sinTilt: Math.sin(tilt),
+      speed, angle
+    });
   });
 
+  // Only create 3 decorative rings (not 15)
+  const ringConfigs = [
+    { rx: 120, ry: 60, tilt: 0.5 },
+    { rx: 200, ry: 90, tilt: 2.1 },
+    { rx: 270, ry: 120, tilt: 4.2 }
+  ];
+  ringConfigs.forEach(cfg => {
+    const ring = document.createElement('div');
+    ring.className = 'orbit-ring';
+    ring.style.width = `${cfg.rx * 2}px`;
+    ring.style.height = `${cfg.ry * 2}px`;
+    ring.style.transform = `translate(-50%, -50%) rotate(${cfg.tilt}rad)`;
+    orbitSystem.appendChild(ring);
+  });
+
+  // Pause animation when section is not visible (huge perf win on mobile)
+  let orbitRunning = false;
+  let orbitRAF = null;
+
   function animateOrbits() {
-    satellitesData.forEach(data => {
-      data.angle += data.speed;
-      
-      // Calculate 2D position on standard ellipse
-      const x = data.rx * Math.cos(data.angle);
-      const y = data.ry * Math.sin(data.angle);
-      
-      // Rotate coordinate by tilt angle
-      const rotatedX = x * Math.cos(data.tilt) - y * Math.sin(data.tilt);
-      const rotatedY = x * Math.sin(data.tilt) + y * Math.cos(data.tilt);
-      
-      // Depth (Z) estimation based on Y position before tilt
-      const z = data.rx * Math.sin(data.angle); 
-      const scale = (z + 500) / 500; // normalize scale (objects closer are larger)
-      const opacity = Math.min(1, Math.max(0.4, (z + 200) / 200));
-      
-      // Apply transforms in 2D space -> Icon NEVER skews, always faces user!
-      data.el.style.transform = `translate(-50%, -50%) translate(${rotatedX}px, ${rotatedY}px) scale(${scale})`;
-      data.el.style.zIndex = Math.round(z + 1000);
-      data.el.style.opacity = opacity;
-    });
-    requestAnimationFrame(animateOrbits);
+    for (let i = 0; i < satellitesData.length; i++) {
+      const d = satellitesData[i];
+      d.angle += d.speed;
+
+      const cosA = Math.cos(d.angle);
+      const sinA = Math.sin(d.angle);
+      const x = d.rx * cosA;
+      const y = d.ry * sinA;
+      const rotatedX = x * d.cosTilt - y * d.sinTilt;
+      const rotatedY = x * d.sinTilt + y * d.cosTilt;
+
+      const z = d.rx * sinA;
+      const scale = (z + 500) / 500;
+
+      d.el.style.transform = `translate(${rotatedX}px, ${rotatedY}px) scale(${scale})`;
+      d.el.style.zIndex = Math.round(z + 1000);
+      d.el.style.opacity = Math.min(1, Math.max(0.4, (z + 200) / 200));
+    }
+    if (orbitRunning) {
+      orbitRAF = requestAnimationFrame(animateOrbits);
+    }
   }
-  
-  animateOrbits();
+
+  // Use IntersectionObserver to only run animation when visible
+  const orbitObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        if (!orbitRunning) {
+          orbitRunning = true;
+          orbitRAF = requestAnimationFrame(animateOrbits);
+        }
+      } else {
+        orbitRunning = false;
+        if (orbitRAF) {
+          cancelAnimationFrame(orbitRAF);
+          orbitRAF = null;
+        }
+      }
+    });
+  }, { threshold: 0.1 });
+
+  orbitObserver.observe(orbitSystem);
 }
