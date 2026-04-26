@@ -86,4 +86,94 @@ if (projectsCarousel && projectsTrack) {
   });
 }
 
+// === Sprint Track Engine (Draggable + Auto-Scroll) ===
+const sprintLanes = document.querySelectorAll('.sprint-lane');
+sprintLanes.forEach((lane) => {
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+  let isHovered = false;
+  const isReverse = lane.classList.contains('lane-reverse');
+  const speed = isReverse ? -1.5 : 1.5;
 
+  const contentBlock = lane.querySelector('.sprint-track-content');
+  if (!contentBlock) return;
+  
+  let contentWidth = contentBlock.offsetWidth;
+
+  if (isReverse) {
+    lane.scrollLeft = contentWidth;
+  }
+
+  lane.addEventListener('mousedown', (e) => {
+    isDown = true;
+    lane.style.cursor = 'grabbing';
+    startX = e.pageX - lane.offsetLeft;
+    scrollLeft = lane.scrollLeft;
+  });
+  
+  lane.addEventListener('mouseleave', () => {
+    isDown = false;
+    isHovered = false;
+    lane.style.cursor = 'grab';
+  });
+  
+  lane.addEventListener('mouseup', () => {
+    isDown = false;
+    lane.style.cursor = 'grab';
+  });
+  
+  lane.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - lane.offsetLeft;
+    const walk = (x - startX) * 1.5; 
+    let newScrollLeft = scrollLeft - walk;
+
+    if (!isReverse) {
+        if (newScrollLeft >= contentWidth) {
+            newScrollLeft -= contentWidth;
+            scrollLeft -= contentWidth;
+        } else if (newScrollLeft <= 0) {
+            newScrollLeft += contentWidth;
+            scrollLeft += contentWidth;
+        }
+    } else {
+        if (newScrollLeft <= 0) {
+            newScrollLeft += contentWidth;
+            scrollLeft += contentWidth;
+        } else if (newScrollLeft >= contentWidth) {
+            newScrollLeft -= contentWidth;
+            scrollLeft -= contentWidth;
+        }
+    }
+
+    lane.scrollLeft = newScrollLeft;
+  });
+
+  lane.addEventListener('mouseenter', () => {
+    isHovered = true;
+  });
+
+  const autoScrollLane = () => {
+    contentWidth = contentBlock.offsetWidth;
+    if (!isDown && !isHovered && contentWidth > 0) {
+      lane.scrollLeft += speed;
+      if (!isReverse) {
+        if (lane.scrollLeft >= contentWidth) {
+          lane.scrollLeft -= contentWidth;
+        } else if (lane.scrollLeft <= 0) {
+          lane.scrollLeft += contentWidth;
+        }
+      } else {
+        if (lane.scrollLeft <= 0) {
+          lane.scrollLeft += contentWidth;
+        } else if (lane.scrollLeft >= contentWidth) {
+          lane.scrollLeft -= contentWidth;
+        }
+      }
+    }
+    requestAnimationFrame(autoScrollLane);
+  };
+  requestAnimationFrame(autoScrollLane);
+});

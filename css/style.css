@@ -643,9 +643,17 @@ body.dark-theme {
 .sprint-lane {
   margin-bottom: 2rem;
   position: relative;
-  /* Glowing track line */
   border-bottom: 1px solid rgba(255, 77, 90, 0.1);
   padding-bottom: 1.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.sprint-lane::-webkit-scrollbar {
+  display: none;
+}
+.sprint-lane:active {
+  cursor: grabbing;
 }
 .sprint-lane::after {
   content: '';
@@ -661,12 +669,7 @@ body.dark-theme {
 .sprint-marquee {
   display: flex;
   width: max-content;
-  animation: sprint-marquee 25s linear infinite;
-}
-
-.sprint-lane.lane-reverse .sprint-marquee {
-  animation-direction: reverse;
-  animation-duration: 30s;
+  pointer-events: none; /* Let the lane handle drag events */
 }
 
 .sprint-track-content {
@@ -674,11 +677,7 @@ body.dark-theme {
   align-items: center;
   gap: 4rem;
   padding-right: 4rem;
-}
-
-/* Pause running animation on hover */
-.sprint-marquee:hover {
-  animation-play-state: paused;
+  pointer-events: auto; /* Re-enable clicks on icons */
 }
 
 .tech-icon {
@@ -726,10 +725,7 @@ body.dark-theme {
   transform: translateY(0);
 }
 
-@keyframes sprint-marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
+
 
 /* === Experience Timeline === */
 .timeline {
