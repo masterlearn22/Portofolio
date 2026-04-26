@@ -805,6 +805,12 @@ body.dark-theme {
   padding-bottom: 4rem;
 }
 
+.projects-section .section-bg-text {
+  left: auto;
+  right: -5%;
+  top: 10%;
+}
+
 .projects-section > .container {
   width: 100%;
   margin-bottom: 2rem;
