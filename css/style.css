@@ -359,8 +359,7 @@ body.dark-theme {
 
 /* === Sections General === */
 .section {
-  min-height: 100vh;
-  padding: 8rem 4rem 4rem;
+  padding: 5rem 4rem 2rem;
   position: relative;
   display: flex;
   align-items: center;
@@ -715,38 +714,51 @@ body.dark-theme {
 }
 
 /* === Projects === */
+.projects-section {
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-bottom: 4rem;
+}
+
+.projects-section > .container {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
 .projects-carousel {
-  width: 100vw; /* Bleed to edges */
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  overflow: hidden;
+  width: 100vw;
+  overflow-x: auto;
+  overflow-y: hidden;
   padding: 2rem 0;
+  scroll-behavior: auto;
+  cursor: grab;
+  /* Hide scrollbar for clean look */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.projects-carousel::-webkit-scrollbar {
+  display: none;
+}
+.projects-carousel:active {
+  cursor: grabbing;
 }
 
 .projects-track {
   display: flex;
   flex-wrap: nowrap;
-  gap: 2rem;
+  gap: 1rem;
   width: max-content;
-  animation: scrollCarousel 40s linear infinite;
+  pointer-events: none; /* Let drag events hit the carousel */
 }
-
-.projects-carousel:hover .projects-track {
-  animation-play-state: paused;
-}
-
-@keyframes scrollCarousel {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+.projects-track > * {
+  pointer-events: auto; /* Re-enable pointer events for cards */
 }
 
 .project-card {
   text-decoration: none;
   display: block;
-  flex: 0 0 clamp(300px, 40vw, 600px);
+  flex: 0 0 clamp(400px, 60vw, 800px);
 }
 
 
