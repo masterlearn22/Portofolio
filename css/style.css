@@ -365,6 +365,7 @@ body.dark-theme {
   align-items: center;
   scroll-snap-align: start;
   min-height: 100vh;
+  overflow: hidden; /* Prevent background leak */
 }
 
 .section-bg-text {
@@ -448,7 +449,7 @@ body.dark-theme {
 }
 
 /* Animated Gradient Background */
-.hero-gradient-bg {
+.section-gradient-bg {
   position: absolute;
   inset: 0;
   background: 
