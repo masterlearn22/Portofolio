@@ -675,8 +675,8 @@ body.dark-theme {
 .sprint-track-content {
   display: flex;
   align-items: center;
-  gap: 4rem;
-  padding-right: 4rem;
+  justify-content: space-around;
+  min-width: 100vw;
   pointer-events: auto; /* Re-enable clicks on icons */
 }
 
